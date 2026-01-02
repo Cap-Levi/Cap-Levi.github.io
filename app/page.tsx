@@ -210,7 +210,7 @@ export default function HomePage() {
               {
                 title: "HackTheBox Practitioner",
                 org: "Hands-on Training",
-                desc: "Completed 48+ real-world DFIR scenarios through Sherlock challenge series",
+                desc: "Completed 49+ real-world DFIR scenarios through Sherlock challenge series",
               },
               {
                 title: "Threat Analysis & Hunting",
