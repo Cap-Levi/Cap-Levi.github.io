@@ -59,17 +59,17 @@ export default function HomePage() {
               Cybersecurity Graduate | Blue Team | DFIR
             </p>
             <p className="text-lg text-foreground/80 leading-relaxed max-w-3xl">
-              I specialize in incident response, digital forensics, and threat
-              detection. My focus is on understanding attacker behavior through
+              I specialise in incident response, digital forensics, and threat
+              detection. My focus is on understanding attacker behaviour through
               comprehensive log analysis and defensive security strategies.
             </p>
           </div>
         </section>
 
-        {/* Specializations */}
+        {/* Specialisations */}
         <section className="mb-24 md:mb-32">
           <h2 className="text-3xl font-bold text-primary mb-8">
-            Specialization
+            Specialisation
           </h2>
           <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
             {[
@@ -143,7 +143,7 @@ export default function HomePage() {
                 <h3 className="font-bold text-accent mb-3">{section.title}</h3>
                 <ul className="space-y-1 text-foreground/80 text-sm">
                   {section.items.map((item, i) => (
-                    <li key={i}>• {item}</li>
+                    <li key={i}>{item}</li>
                   ))}
                 </ul>
               </div>
@@ -205,7 +205,7 @@ export default function HomePage() {
               {
                 title: "Cybersecurity Graduate",
                 org: "Dedicated Professional Development",
-                desc: "Specialized coursework in incident response, forensics, and defensive security operations",
+                desc: "Specialised coursework in incident response, forensics, and defensive security operations",
               },
               {
                 title: "HackTheBox Practitioner",
