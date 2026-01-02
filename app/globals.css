@@ -1,0 +1,246 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Hacker-themed color palette: Green → Black */
+  --background: #0a0e27;
+  --foreground: #e0e6ff;
+  --card: #111829;
+  --card-foreground: #e0e6ff;
+  --popover: #111829;
+  --popover-foreground: #e0e6ff;
+  --primary: #10b981;
+  --primary-foreground: #0a0e27;
+  --secondary: #1f2937;
+  --secondary-foreground: #e0e6ff;
+  --muted: #1f2937;
+  --muted-foreground: #9ca3af;
+  --accent: #06d6a0;
+  --accent-foreground: #0a0e27;
+  --destructive: #ef4444;
+  --destructive-foreground: #fecaca;
+  --border: #1f2937;
+  --input: #111829;
+  --ring: #10b981;
+  --chart-1: #10b981;
+  --chart-2: #06d6a0;
+  --chart-3: #34d399;
+  --chart-4: #059669;
+  --chart-5: #047857;
+  --radius: 0.5rem;
+  --sidebar: #111829;
+  --sidebar-foreground: #e0e6ff;
+  --sidebar-primary: #10b981;
+  --sidebar-primary-foreground: #0a0e27;
+  --sidebar-accent: #06d6a0;
+  --sidebar-accent-foreground: #0a0e27;
+  --sidebar-border: #1f2937;
+  --sidebar-ring: #10b981;
+}
+
+@theme inline {
+  --font-sans: "Inter", "Inter Fallback", system-ui, sans-serif;
+  --font-mono: "Fira Code", "Courier New", monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Terminal-style typography and hacker aesthetics */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-sans font-bold tracking-tight;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl mb-4 text-primary;
+    font-weight: 800;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl mt-8 mb-4 text-primary font-bold;
+  }
+
+  /* Make h3 (question headings) green, bold, and larger */
+  h3 {
+    @apply text-2xl md:text-3xl mt-8 mb-3 text-accent font-bold;
+  }
+
+  h4 {
+    @apply mt-8 mb-4;
+  }
+
+  p {
+    @apply text-lg leading-relaxed mb-6 text-foreground;
+  }
+
+  code {
+    @apply font-mono bg-card text-accent px-2 py-1 rounded;
+  }
+
+  /* Reduce pre padding and make code blocks more compact with no scrollbar overflow */
+  pre {
+    @apply bg-card border border-border rounded-lg p-4 mb-8 my-4 overflow-hidden;
+  }
+
+  pre code {
+    @apply bg-transparent text-accent px-0 py-0 text-sm overflow-hidden whitespace-pre-wrap break-words;
+  }
+
+  a {
+    @apply text-primary hover:text-accent underline transition-colors;
+  }
+
+  /* Add proper styling for HTML sup and font tags */
+  sup {
+    @apply text-xs align-super;
+  }
+
+  font {
+    @apply text-foreground;
+  }
+
+  font[color="Green"] {
+    @apply text-accent font-bold;
+  }
+
+  ul,
+  ol {
+    @apply ml-6 mb-6;
+  }
+
+  ul li,
+  ol li {
+    @apply mb-3;
+  }
+
+  ul li {
+    @apply list-disc;
+  }
+
+  ol li {
+    @apply list-decimal;
+  }
+
+  img {
+    @apply max-w-full h-auto rounded-lg my-8 border border-border;
+  }
+
+  blockquote {
+    @apply border-l-4 border-primary pl-4 py-2 my-8 text-foreground/80 italic;
+  }
+
+  hr {
+    @apply my-12 border-border;
+  }
+
+  table {
+    @apply w-full border-collapse border border-border mb-4;
+  }
+
+  table th {
+    @apply bg-card border border-border px-3 py-2 text-accent text-left;
+  }
+
+  table td {
+    @apply border border-border px-3 py-2;
+  }
+
+  /* Smooth fade-in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .slide-in-left {
+    animation: slideInLeft 0.6s ease-out forwards;
+  }
+}
+
+/* Card content overrides - consistent spacing for all cards */
+.card-content h3 {
+  margin-top: 0;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.card-content p {
+  margin-bottom: 0;
+}
+
+.card-content ul {
+  margin-bottom: 0;
+}
+
+.card-content div {
+  margin-bottom: 0;
+}
