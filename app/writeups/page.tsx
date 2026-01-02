@@ -3,45 +3,59 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
+import MarkdownIt from "markdown-it";
+
+const md = new MarkdownIt({
+  html: true,
+  linkify: true,
+  typographer: true,
+});
+
+type Writeup = {
+  id: string;
+  title: string;
+  date: string;
+};
 
 export default function WriteupsPage() {
-  const [writeups, setWriteups] = useState<
-    Array<{ id: string; title: string; date: string }>
-  >([]);
+  const [writeups, setWriteups] = useState<Writeup[]>([]);
   const [selectedWriteup, setSelectedWriteup] = useState<string | null>(null);
   const [content, setContent] = useState<string>("");
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
+  // Load writeups index
   useEffect(() => {
-    // Fetch available writeups
-    const fetchWriteups = async () => {
+    const loadIndex = async () => {
       try {
-        const response = await fetch("/api/writeups");
-        const data = await response.json();
+        const res = await fetch("/writeups/index.json");
+        const data: Writeup[] = await res.json();
         setWriteups(data);
         if (data.length > 0) {
           setSelectedWriteup(data[0].id);
         }
-      } catch (error) {
-        console.error("Failed to fetch writeups:", error);
+      } catch (err) {
+        console.error("Failed to load writeups index", err);
       }
     };
-    fetchWriteups();
+    loadIndex();
   }, []);
 
+  // Load markdown content
   useEffect(() => {
-    if (selectedWriteup) {
-      const fetchContent = async () => {
-        try {
-          const response = await fetch(`/api/writeups/${selectedWriteup}`);
-          const data = await response.json();
-          setContent(data.content);
-        } catch (error) {
-          console.error("Failed to fetch writeup content:", error);
-        }
-      };
-      fetchContent();
-    }
+    if (!selectedWriteup) return;
+
+    const loadMarkdown = async () => {
+      try {
+        const res = await fetch(`/writeups/${selectedWriteup}.md`);
+        const text = await res.text();
+        const html = md.render(text);
+        setContent(html);
+      } catch (err) {
+        console.error("Failed to load markdown", err);
+      }
+    };
+
+    loadMarkdown();
   }, [selectedWriteup]);
 
   return (
@@ -64,7 +78,7 @@ export default function WriteupsPage() {
       </nav>
 
       <div className="flex h-[calc(100vh-73px)]">
-        {/* Sidebar Navigation */}
+        {/* Sidebar */}
         <aside
           className={`${
             sidebarOpen ? "w-72" : "w-0"
@@ -74,33 +88,31 @@ export default function WriteupsPage() {
             <div className="text-sm text-primary font-mono opacity-75 mb-4">
               {writeups.length} writeups
             </div>
-            {writeups.map((writeup) => (
+
+            {writeups.map((w) => (
               <button
-                key={writeup.id}
-                onClick={() => setSelectedWriteup(writeup.id)}
+                key={w.id}
+                onClick={() => setSelectedWriteup(w.id)}
                 className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
-                  selectedWriteup === writeup.id
+                  selectedWriteup === w.id
                     ? "bg-primary/20 border border-primary text-primary font-semibold"
                     : "text-foreground/70 hover:text-foreground hover:bg-card/50 border border-transparent"
                 }`}
               >
                 <div className="font-mono text-xs text-muted-foreground">
-                  {writeup.date}
+                  {w.date}
                 </div>
-                <div className="truncate">{writeup.title}</div>
+                <div className="truncate">{w.title}</div>
               </button>
             ))}
           </div>
         </aside>
 
-        {/* Main Content Area */}
+        {/* Content */}
         <main className="flex-1 overflow-y-auto">
           {selectedWriteup && content ? (
-            <article className="w-full px-8 md:px-12 py-12 text-foreground leading-relaxed prose-custom">
-              <div
-                dangerouslySetInnerHTML={{ __html: content }}
-                className="max-w-none"
-              />
+            <article className="w-full px-8 md:px-12 py-12 prose-custom">
+              <div dangerouslySetInnerHTML={{ __html: content }} />
             </article>
           ) : (
             <div className="flex items-center justify-center h-full">
@@ -109,7 +121,7 @@ export default function WriteupsPage() {
                   No writeups available yet
                 </p>
                 <p className="text-sm text-foreground/40 mt-2">
-                  Add markdown files to /writeups to get started
+                  Add markdown files to /public/writeups
                 </p>
               </div>
             </div>
