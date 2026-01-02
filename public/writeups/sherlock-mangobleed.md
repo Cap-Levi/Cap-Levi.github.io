@@ -26,7 +26,7 @@ The MongoDB vulnerability discussed in the scenario is known as **MongoBleed**, 
 
 The designated CVE ID for this vulnerability is **CVE-2025-14847**.
 
-![MangoBleed Task 1](/assets/images/mangobleed/mangobleed_task_1.png)
+![MangoBleed Task 1](/assets/images/MangoBleed/MangoBleed_Task_1.png)
 
 ---
 
