@@ -13,6 +13,7 @@ Difficulty: <font color="Green">Very Easy </font>
     src="https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/af21d0c97db2e27e13572cbf59eb343d.png"
     alt="MangoBleed Sherlock"
     width="100"
+    style="display: inline-block; vertical-align: middle;"
   />
 </a>
 

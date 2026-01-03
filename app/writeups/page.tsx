@@ -49,6 +49,7 @@ export default function WriteupsPage() {
   const [content, setContent] = useState<string>("");
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [tagsExpanded, setTagsExpanded] = useState(false);
   const [error, setError] = useState<string>("");
 
   // Load writeups index
@@ -56,10 +57,12 @@ export default function WriteupsPage() {
     const loadIndex = async () => {
       try {
         const res = await fetch("/writeups/index.json");
-        const data: IndexData = await res.json();
-        setIndexData(data);
-        if (data.writeups.length > 0) {
-          setSelectedWriteup(data.writeups[0].id);
+        const data = await res.json();
+        // Extract first element from array since JSON has array wrapper
+        const indexData: IndexData = Array.isArray(data) ? data[0] : data;
+        setIndexData(indexData);
+        if (indexData.writeups.length > 0) {
+          setSelectedWriteup(indexData.writeups[0].id);
         }
       } catch (err) {
         setError("Failed to load writeups index");
@@ -87,19 +90,6 @@ export default function WriteupsPage() {
     loadMarkdown();
   }, [selectedWriteup]);
 
-  const filteredWriteups =
-    indexData?.writeups.filter((writeup) => {
-      if (selectedTags.length === 0) return true;
-      return selectedTags.some((tag) => writeup.tags?.includes(tag));
-    }) || [];
-
-  const getTagColor = (tagId: string): string => {
-    const tag = indexData?.tags.find((t) => t.id === tagId);
-    return tag
-      ? tagColors[tag.color] || "bg-gray-100 text-gray-800"
-      : "bg-gray-100 text-gray-800";
-  };
-
   const toggleTag = (tagId: string) => {
     setSelectedTags((prev) =>
       prev.includes(tagId) ? prev.filter((t) => t !== tagId) : [...prev, tagId]
@@ -121,6 +111,19 @@ export default function WriteupsPage() {
       </div>
     );
   }
+
+  // Now indexData is guaranteed to exist
+  const filteredWriteups = indexData.writeups.filter((writeup) => {
+    if (selectedTags.length === 0) return true;
+    return selectedTags.some((tag) => writeup.tags?.includes(tag));
+  });
+
+  const getTagColor = (tagId: string): string => {
+    const tag = indexData.tags.find((t) => t.id === tagId);
+    return tag
+      ? tagColors[tag.color] || "bg-gray-100 text-gray-800"
+      : "bg-gray-100 text-gray-800";
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -152,31 +155,43 @@ export default function WriteupsPage() {
         >
           <div className="p-6 space-y-6 h-full overflow-y-auto">
             <div>
-              <div className="text-sm font-semibold text-primary mb-3">
-                Filter by Tags
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {indexData.tags.map((tag) => (
-                  <button
-                    key={tag.id}
-                    onClick={() => toggleTag(tag.id)}
-                    className={`px-3 py-1 rounded-full text-xs font-medium border transition-all ${
-                      selectedTags.includes(tag.id)
-                        ? tagColors[tag.color]
-                        : "bg-card/50 text-foreground/70 border-border hover:border-primary"
-                    }`}
-                  >
-                    {tag.name}
-                  </button>
-                ))}
-              </div>
-              {selectedTags.length > 0 && (
-                <button
-                  onClick={() => setSelectedTags([])}
-                  className="text-xs text-primary/70 hover:text-primary mt-2"
-                >
-                  Clear filters
-                </button>
+              <button
+                onClick={() => setTagsExpanded(!tagsExpanded)}
+                className="flex items-center justify-between w-full text-sm font-semibold text-primary mb-3 hover:text-accent transition-colors"
+              >
+                <span>Filter by Tags</span>
+                <ChevronLeft
+                  className={`w-4 h-4 transition-transform duration-200 ${
+                    tagsExpanded ? "-rotate-90" : "rotate-180"
+                  }`}
+                />
+              </button>
+              {tagsExpanded && (
+                <>
+                  <div className="flex flex-wrap gap-2">
+                    {indexData.tags.map((tag) => (
+                      <button
+                        key={tag.id}
+                        onClick={() => toggleTag(tag.id)}
+                        className={`px-3 py-1 rounded-full text-xs font-medium border transition-all ${
+                          selectedTags.includes(tag.id)
+                            ? tagColors[tag.color]
+                            : "bg-card/50 text-foreground/70 border-border hover:border-primary"
+                        }`}
+                      >
+                        {tag.name}
+                      </button>
+                    ))}
+                  </div>
+                  {selectedTags.length > 0 && (
+                    <button
+                      onClick={() => setSelectedTags([])}
+                      className="text-xs text-primary/70 hover:text-primary mt-2"
+                    >
+                      Clear filters
+                    </button>
+                  )}
+                </>
               )}
             </div>
 
