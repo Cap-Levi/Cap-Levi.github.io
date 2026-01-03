@@ -1,12 +1,16 @@
 # MangoBleed Writeup
 
-01 <sup>st </sup> January 2026
+01 `<sup>`st `</sup>` January 2026
 
-Prepared by: CyberJunkie
+Prepared by: [CyberJunkie](https://app.hackthebox.com/users/468989)
 
 Solved By: Leviii
 
-Difficulty: <font color="Green">Very Easy </font>
+Difficulty: `<font color="Green">`Very Easy `</font>`
+
+Sherlock Link:
+
+[![MangoBleed](https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/af21d0c97db2e27e13572cbf59eb343d.png)](https://app.hackthebox.com/sherlocks/MangoBleed?tab=play_sherlock)
 
 ## Scenario
 
