@@ -244,3 +244,9 @@
 .card-content div {
   margin-bottom: 0;
 }
+
+/* Ensure content always stays above background */
+.relative {
+  position: relative;
+  z-index: 10;
+}

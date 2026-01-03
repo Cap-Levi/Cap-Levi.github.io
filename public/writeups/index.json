@@ -1,7 +1,352 @@
 [
   {
-    "id": "sherlock-mangobleed",
-    "title": "Sherlock MangoBleed",
-    "date": "2026-01-01"
+    "tags": [
+      {
+        "id": "dfir",
+        "name": "DFIR",
+        "color": "blue"
+      },
+      {
+        "id": "digital-forensics",
+        "name": "Digital Forensics",
+        "color": "blue"
+      },
+      {
+        "id": "incident-response",
+        "name": "Incident Response",
+        "color": "blue"
+      },
+      {
+        "id": "windows-forensics",
+        "name": "Windows Forensics",
+        "color": "blue"
+      },
+      {
+        "id": "linux-forensics",
+        "name": "Linux Forensics",
+        "color": "orange"
+      },
+      {
+        "id": "memory-forensics",
+        "name": "Memory Forensics",
+        "color": "purple"
+      },
+      {
+        "id": "disk-forensics",
+        "name": "Disk Forensics",
+        "color": "purple"
+      },
+      {
+        "id": "timeline-analysis",
+        "name": "Timeline Analysis",
+        "color": "cyan"
+      },
+      {
+        "id": "artifact-analysis",
+        "name": "Artifact Analysis",
+        "color": "cyan"
+      },
+      {
+        "id": "volatility",
+        "name": "Volatility",
+        "color": "purple"
+      },
+      {
+        "id": "windbg",
+        "name": "WinDbg",
+        "color": "purple"
+      },
+      {
+        "id": "evtx",
+        "name": "EVTX",
+        "color": "cyan"
+      },
+      {
+        "id": "windows-event-logs",
+        "name": "Windows Event Logs",
+        "color": "cyan"
+      },
+      {
+        "id": "sysmon",
+        "name": "Sysmon",
+        "color": "cyan"
+      },
+      {
+        "id": "etw",
+        "name": "ETW",
+        "color": "cyan"
+      },
+      {
+        "id": "prefetch",
+        "name": "Prefetch",
+        "color": "cyan"
+      },
+      {
+        "id": "amcache",
+        "name": "Amcache",
+        "color": "cyan"
+      },
+      {
+        "id": "shimcache",
+        "name": "Shimcache",
+        "color": "cyan"
+      },
+      {
+        "id": "registry-forensics",
+        "name": "Registry Forensics",
+        "color": "blue"
+      },
+      {
+        "id": "soc",
+        "name": "SOC",
+        "color": "green"
+      },
+      {
+        "id": "siem",
+        "name": "SIEM",
+        "color": "green"
+      },
+      {
+        "id": "splunk",
+        "name": "Splunk",
+        "color": "green"
+      },
+      {
+        "id": "elk",
+        "name": "ELK",
+        "color": "green"
+      },
+      {
+        "id": "log-analysis",
+        "name": "Log Analysis",
+        "color": "green"
+      },
+      {
+        "id": "threat-hunting",
+        "name": "Threat Hunting",
+        "color": "red"
+      },
+      {
+        "id": "detection-engineering",
+        "name": "Detection Engineering",
+        "color": "red"
+      },
+      {
+        "id": "alert-triage",
+        "name": "Alert Triage",
+        "color": "red"
+      },
+      {
+        "id": "malware-analysis",
+        "name": "Malware Analysis",
+        "color": "red"
+      },
+      {
+        "id": "static-analysis",
+        "name": "Static Analysis",
+        "color": "red"
+      },
+      {
+        "id": "dynamic-analysis",
+        "name": "Dynamic Analysis",
+        "color": "red"
+      },
+      {
+        "id": "reverse-engineering",
+        "name": "Reverse Engineering",
+        "color": "red"
+      },
+      {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "color": "red"
+      },
+      {
+        "id": "ida",
+        "name": "IDA",
+        "color": "red"
+      },
+      {
+        "id": "pe-analysis",
+        "name": "PE Analysis",
+        "color": "red"
+      },
+      {
+        "id": "obfuscation",
+        "name": "Obfuscation",
+        "color": "red"
+      },
+      {
+        "id": "packing",
+        "name": "Packing",
+        "color": "red"
+      },
+      {
+        "id": "c2-analysis",
+        "name": "C2 Analysis",
+        "color": "red"
+      },
+      {
+        "id": "sandboxing",
+        "name": "Sandboxing",
+        "color": "red"
+      },
+      {
+        "id": "pcap",
+        "name": "PCAP",
+        "color": "indigo"
+      },
+      {
+        "id": "wireshark",
+        "name": "Wireshark",
+        "color": "indigo"
+      },
+      {
+        "id": "tcpdump",
+        "name": "tcpdump",
+        "color": "indigo"
+      },
+      {
+        "id": "network-traffic-analysis",
+        "name": "Network Traffic Analysis",
+        "color": "indigo"
+      },
+      {
+        "id": "dns-analysis",
+        "name": "DNS Analysis",
+        "color": "indigo"
+      },
+      {
+        "id": "http",
+        "name": "HTTP",
+        "color": "indigo"
+      },
+      {
+        "id": "tls",
+        "name": "TLS",
+        "color": "indigo"
+      },
+      {
+        "id": "beaconing",
+        "name": "Beaconing",
+        "color": "indigo"
+      },
+      {
+        "id": "ctf",
+        "name": "CTF",
+        "color": "pink"
+      },
+      {
+        "id": "hack-the-box",
+        "name": "Hack The Box",
+        "color": "pink"
+      },
+      {
+        "id": "sherlock",
+        "name": "Sherlock",
+        "color": "pink"
+      },
+      {
+        "id": "blue-team",
+        "name": "Blue Team",
+        "color": "pink"
+      },
+      {
+        "id": "incident-simulation",
+        "name": "Incident Simulation",
+        "color": "pink"
+      },
+      {
+        "id": "challenge-writeup",
+        "name": "Challenge Writeup",
+        "color": "pink"
+      },
+      {
+        "id": "steganography",
+        "name": "Steganography",
+        "color": "amber"
+      },
+      {
+        "id": "cryptography",
+        "name": "Cryptography",
+        "color": "amber"
+      },
+      {
+        "id": "xor",
+        "name": "XOR",
+        "color": "amber"
+      },
+      {
+        "id": "encoding",
+        "name": "Encoding",
+        "color": "amber"
+      },
+      {
+        "id": "hashing",
+        "name": "Hashing",
+        "color": "amber"
+      },
+      {
+        "id": "otp",
+        "name": "OTP",
+        "color": "amber"
+      },
+      {
+        "id": "cipher-analysis",
+        "name": "Cipher Analysis",
+        "color": "amber"
+      },
+      {
+        "id": "autopsy",
+        "name": "Autopsy",
+        "color": "slate"
+      },
+      {
+        "id": "sleuth-kit",
+        "name": "The Sleuth Kit",
+        "color": "slate"
+      },
+      {
+        "id": "eric-zimmerman-tools",
+        "name": "Eric Zimmerman Tools",
+        "color": "slate"
+      },
+      {
+        "id": "ftk-imager",
+        "name": "FTK Imager",
+        "color": "slate"
+      },
+      {
+        "id": "sysinternals",
+        "name": "Sysinternals",
+        "color": "slate"
+      },
+      {
+        "id": "process-hacker",
+        "name": "Process Hacker",
+        "color": "slate"
+      },
+      {
+        "id": "yara",
+        "name": "YARA",
+        "color": "slate"
+      },
+      {
+        "id": "sigma",
+        "name": "Sigma",
+        "color": "slate"
+      }
+    ],
+    "writeups": [
+      {
+        "id": "sherlock-mangobleed",
+        "title": "Sherlock MangoBleed",
+        "date": "2026-01-01",
+        "tags": [
+          "log-analysis",
+          "linux-forensics"
+        ]
+      }
+    ]
   }
 ]

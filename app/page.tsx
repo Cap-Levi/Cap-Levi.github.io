@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { MatrixBackground } from "@/components/matrix-background";
 
 export default function HomePage() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -12,17 +13,8 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-background via-background to-card">
-      {/* Animated background grid effect */}
-      <div className="fixed inset-0 opacity-10 pointer-events-none">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage:
-              "linear-gradient(0deg, transparent 24%, rgba(16, 185, 129, 0.1) 25%, rgba(16, 185, 129, 0.1) 26%, transparent 27%, transparent 74%, rgba(16, 185, 129, 0.1) 75%, rgba(16, 185, 129, 0.1) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(16, 185, 129, 0.1) 25%, rgba(16, 185, 129, 0.1) 26%, transparent 27%, transparent 74%, rgba(16, 185, 129, 0.1) 75%, rgba(16, 185, 129, 0.1) 76%, transparent 77%, transparent)",
-            backgroundSize: "50px 50px",
-          }}
-        />
-      </div>
+      {/* Matrix background animation */}
+      <MatrixBackground />
 
       <nav className="relative z-4 border-b border-border bg-card/50 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto px-4 md:px-8 py-4 flex justify-between items-center">
