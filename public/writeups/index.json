@@ -7,16 +7,6 @@
         "color": "blue"
       },
       {
-        "id": "digital-forensics",
-        "name": "Digital Forensics",
-        "color": "blue"
-      },
-      {
-        "id": "incident-response",
-        "name": "Incident Response",
-        "color": "blue"
-      },
-      {
         "id": "windows-forensics",
         "name": "Windows Forensics",
         "color": "blue"
@@ -343,8 +333,10 @@
         "title": "Sherlock MangoBleed",
         "date": "2026-01-01",
         "tags": [
+          "dfir",
           "log-analysis",
-          "linux-forensics"
+          "linux-forensics",
+          "timeline-analysis"
         ]
       }
     ]
