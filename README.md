@@ -17,7 +17,7 @@ Primary focus areas include:
 * **SIEM Operations & Threat Hunting**
 * **Blue Team Methodologies**
 
-📊 **Progress:** **48 / 128 Sherlocks Completed**
+📊 **Progress:** **49 / 128 Sherlocks Completed**
 
 ---
 
@@ -27,13 +27,12 @@ Primary focus areas include:
 │   ├── page.tsx              </span><span># Homepage</span><span>
 │   ├── writeups/
 │   │   └── page.tsx          </span><span># Writeups page with sidebar navigation</span><span>
-│   ├── api/
-│   │   └── writeups/         </span><span># API routes for loading writeups</span><span>
 │   ├── layout.tsx            </span><span># Root layout</span><span>
 │   └── globals.css           </span><span># Global styles (green/black hacker theme)</span><span>
 ├── </span><span>public</span><span>/
 │   ├── writeups/             </span><span># Markdown-based Sherlock writeups</span><span>
 │   │   └── *.md
+	└── index.json	      </span><span># Manages the Writeup tags, contains writeup ID's and tags for feching the *.md of your respective writeup</span><span>
 │   └── assets/
 │       └── images/
 │           └── sherlock-image/
