@@ -107,6 +107,47 @@ Reference them in Markdown:
 
 ---
 
+### 3️⃣ Add Writeup to index.json
+
+To add a new writeup to site, update the `public/writeups/index.json` file:
+
+```json
+{
+  "tags": [
+    {
+      "id": "log-analysis",
+      "name": "Log Analysis",
+      "color": "green"
+    },
+    {
+      "id": "linux-forensics",
+      "name": "Linux Forensics",
+      "color": "orange"
+    }
+    // Add new tags here if needed
+  ],
+  "writeups": [
+    {
+      "id": "sherlock-mangobleed",
+      "title": "Sherlock MangoBleed",
+      "date": "2026-01-01",
+      "tags": ["log-analysis", "linux-forensics"]
+    }
+    // Add your new writeup here
+  ]
+}
+```
+
+**Steps:**
+1. Create your writeup as a Markdown file: `public/writeups/{your-writeup-id}.md`
+2. Add an entry to the `writeups` array in `index.json` with the same `id`
+3. Assign relevant tags from the existing `tags` array
+4. Optionally, create new tags in the `tags` array if needed
+
+**Available tag colors:** `blue`, `purple`, `orange`, `red`, `cyan`, `green`, `indigo`, `pink`, `amber`, `slate`
+
+---
+
 ### 4️⃣ Deploy
 
 Commit and push:
