@@ -32,7 +32,8 @@ Primary focus areas include:
 ├── </span><span>public</span><span>/
 │   ├── writeups/             </span><span># Markdown-based Sherlock writeups</span><span>
 │   │   └── *.md
-	└── index.json	          </span><span># Manages the Writeup tags, contains writeup ID's and tags for feching the *.md of your writeups</span><span>
+	└── index.json	          </span><span># Manages the Writeup tags, contains writeup ID's and tags for feching the 
+								*.md of your writeups</span><span>
 │   └── assets/
 │       └── images/
 │           └── sherlock-image/
